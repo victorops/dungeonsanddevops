@@ -1,0 +1,149 @@
+<tw-storydata name="Oh Snap! VictorOps is down!" startnode="1" creator="Twine" creator-version="2.2.1" ifid="19AFF111-3A97-4627-9E8A-43D611484515" zoom="1" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">em {
+  color: fuchsia;
+  font-style: normal;
+}
+
+tw-link {
+  background-color: lightgray;
+  border: groove ghostwhite;
+  color: mediumblue;
+  display: inline-block;
+  margin: .25rem;
+  padding: .25rem;
+}
+
+tw-passage {
+  border: groove fuchsia;
+  color: lime;
+  font-family: "Lucida Console", Monaco, regular, monospace;
+  padding: 2rem;
+}
+
+tw-story {
+  background-image: url("assets/grid.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ul {
+  list-style: none;
+}
+
+.timer {
+  background-color: brown;
+  padding-left: .25rem;
+  padding-right: .25rem;
+}
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">var icon = document.createElement("link");
+icon.type = 'image/x-icon';
+icon.rel = "shortcut icon";
+icon.href = "assets/vo-80s-icon.png";
+icon.sizes = "16x16 24x24 32x32 48x48 64x64 96x96";
+
+document.head.appendChild(icon);
+
+var music = document.createElement("iframe");
+music.style.display = "none";
+music.src = "https://www.youtube.com/embed/OCgqntOdnQw?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1&loop=1";
+music.allow = "autoplay; encrypted-media";
+
+document.body.appendChild(music);
+
+</script><tw-passagedata pid="1" name="Start" tags="" position="624,200" size="100,100">&lt;img src=&quot;assets/vo-80s.png&quot;&gt;
+You are a platform engineer at VictorOps! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
+
+There are a few teams that you could reach out to for more information:
+* [[Operations Management-&gt;ops-management]]
+* [[Front End Web-&gt;front-end]]
+* [[Middle Tier-&gt;middle-tier]]
+
+(set: $ttr to 0)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="ops-management" tags="" position="475,350" size="100,100">&quot;We deployed config changes yesterday, but nothing recent. I don&#39;t think we can help with this issue. Maybe ask another team?&quot;
+
+* [[Front End Web-&gt;front-end]]
+* [[Middle Tier-&gt;middle-tier]]
+
+(set: $ttr to $ttr + 2)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="front-end" tags="" position="775,350" size="100,100">&quot;We noticed the issue too. No one has been able to log in and we are all investigating the what could cause this.&quot;
+
+* [[Operations Management-&gt;ops-management]]
+* [[Middle Tier-&gt;middle-tier]]
+
+(set: $ttr to $ttr + 3)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="4" name="middle-tier" tags="" position="625,350" size="100,100">&quot;We did just deploy code changes and have been getting reports of others having issues! We&#39;re fairly sure that the issues are related.&quot;
+
+* [[Look at diff of changes from deploy-&gt;look-at-diff]]
+* [[Look at Grafana graphs-&gt;look-at-graphs]]
+* [[Look at Splunk logs-&gt;look-at-logs]]
+
+(set: $ttr to $ttr + 2)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="look-at-diff" tags="" position="475,500" size="100,100">The diff shows changes irrelevant to this issue. There must have been another change to cause this failure
+
+* [[Look at Grafana graphs-&gt;look-at-graphs]]
+* [[Look at Splunk logs-&gt;look-at-logs]]
+* [[Look at the Puppet config diff since last deploy-&gt;look-at-puppet]]
+
+(set: $ttr to $ttr + 5)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="6" name="look-at-graphs" tags="" position="625,500" size="100,100">Graphs are showing nominal levels, execpt for a drop-off in websocket connections. This is probably indicating less users logging in.
+
+* [[Look at diff of changes from deploy-&gt;look-at-diff]]
+* [[Look at Splunk logs-&gt;look-at-logs]]
+
+(set: $ttr to $ttr + 2)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="look-at-logs" tags="" position="775,500" size="100,100">There is a spike in log volume starting at the time of the deploy! You notice most of the logs are related to Zookeeper. There might have been a config change.
+
+* [[Look at diff of changes from deploy-&gt;look-at-diff]]
+* [[Look at Grafana graphs-&gt;look-at-graphs]]
+* [[Look at the Puppet config diff since last deploy-&gt;look-at-puppet]]
+
+(set: $ttr to $ttr + 1)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="look-at-puppet" tags="" position="625,650" size="100,100">There were changes to Zookeeper in yesterday&#39;s Puppet config deploy that were incorrect! This is deffinitely the cause of the outage!
+
+* [[Yell at Operations Management-&gt;yell]]
+* [[Rollback Puppet changes-&gt;rollback-puppet]]
+* [[SSH to box to manually correct config-&gt;manual-correction]]
+
+(set: $ttr to $ttr + 1)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="yell" tags="" position="475,800" size="100,100">Everyone is now stressed and nothing more has been done to resolve the outage...
+
+* [[Rollback Puppet changes-&gt;rollback-puppet]]
+* [[SSH to box to manually correct config-&gt;manual-correction]]
+
+(set: $ttr to $ttr + 5)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="rollback-puppet" tags="" position="625,800" size="100,100">You started the rollback, but Puppet takes 20 minutes to propigate it&#39;s changes.
+
+* [[Wait for rollback to take-&gt;wait-for-rollback]]
+* [[SSH to box to manually correct config-&gt;manual-correction-2]]
+
+(set: $ttr to $ttr + 3)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="manual-correction" tags="" position="775,800" size="100,100">You manually correct the config and the changes are able to take immediately after you deploy. Customers are able to log in again!
+
+* [[Go get a beer-&gt;beer]]
+* [[Rollback Puppet config-&gt;rollback-puppet-2]]
+
+(set: $ttr to $ttr + 5)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="manual-correction-2" tags="" position="475,1175" size="100,100">You manually correct the config and the changes are able to take immediately. Customers are able to log in again! Since you already made the changes to the Puppet repo, you are set for the future!
+
+(set: $ttr to $ttr + 5)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
+
+(link: &quot;Restart&quot;)[&lt;script&gt;document.location.reload();&lt;/script&gt;]</tw-passagedata><tw-passagedata pid="13" name="wait-for-rollback" tags="" position="625,950" size="100,100">The rollback takes, but in the expense of time that customers were affected. Customers are mad, your boss is disappointed, and you are sad :(.
+
+(set: $ttr to $ttr + 20)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
+
+(link: &quot;Restart&quot;)[&lt;script&gt;document.location.reload();&lt;/script&gt;]</tw-passagedata><tw-passagedata pid="14" name="beer" tags="" position="775,951" size="100,100">Wow! What a day! However, during your refreshing beer break, you get paged for another outage! It&#39;s the same issue! The Middle Tier team did another deployment and because you did not rollback the Puppet config changes, your manual fixes were overwritten! Your failure has resulted in being removed as the incident commander...
+
+(set: $ttr to $ttr + 20)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes and counting...&lt;/div&gt;
+
+(link: &quot;Restart&quot;)[&lt;script&gt;document.location.reload();&lt;/script&gt;]</tw-passagedata><tw-passagedata pid="15" name="rollback-puppet-2" tags="" position="675,1175" size="100,100">You started the rollback, but Puppet takes 20 minutes to propigate it&#39;s changes. Good thing you already manually changed the configs so that customers don&#39;t have to wait for the changes to propigate!
+
+Congratulations!
+
+(set: $ttr to $ttr + 0)
+&lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
+
+(link: &quot;Restart&quot;)[&lt;script&gt;document.location.reload();&lt;/script&gt;]</tw-passagedata></tw-storydata>
