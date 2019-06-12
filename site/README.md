@@ -16,8 +16,8 @@ The game is manually published in Twine to HTML so it can be served by Netlify. 
 
 ### Workflow
 1. Create a branch off master
-2. Make changes to site/devopsgame.html in Twine
-3. Publish site/devopsgame.html in Twine and put the output file in site/public/index.html
+2. Make changes to site/public/index.html in Twine
+3. Publish story to site/public/index.html in Twine
 4. Preview changes locally
 5. Merge working branch back into master
 6. Check that the deployment went ok in Netlify

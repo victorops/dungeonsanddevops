@@ -22,7 +22,7 @@ tw-link {
   color: mediumblue;
   display: inline-block;
   margin: .25rem;
-  padding: .25rem;
+  padding: .25rem 1rem;
 }
 
 tw-passage {
@@ -37,6 +37,11 @@ tw-story {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 5% 10%;
+}
+
+tw-icon {
+	opacity: 0.9;
 }
 
 ul {
@@ -53,7 +58,16 @@ ul {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  margin-top: 60px;
 }
+
+row2 {
+	display: flex;
+  	flex-flow: column nowrap;
+	justify-content: space-between;
+}
+
+
 
 
 
@@ -111,10 +125,12 @@ document.body.appendChild(music);
 
 
 
-</script><tw-passagedata pid="1" name="Start" tags="" position="623,200" size="100,100">&lt;img src=&quot;assets/vo-80s.png&quot;&gt;
-You are a platform engineer at DigiTron! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
+
+
+</script><tw-passagedata pid="1" name="Start" tags="" position="624,200" size="100,100">You are a platform engineer at DigiTron! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
 
 There are a few teams that you could reach out to for more information:
+
 * [[DevOps-&gt;ops-management]]
 * [[Front End Web-&gt;front-end]]
 * [[Backend-&gt;middle-tier]]
@@ -212,39 +228,21 @@ There are a few teams that you could reach out to for more information:
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-  (link-repeat: &quot;Restart&quot;)[(reload:)]
-  (link-repeat: &quot;Share&quot;)[(open-url: $url)]
-  (link-repeat: &quot;Get Better&quot;)[(open-url: &quot;https://victorops.com/ebooks/why-devops-matters-collaborative-transparency-in-incident-management/&quot;)]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="wait-for-rollback" tags="" position="625,951" size="100,100">The rollback takes but customers were affected for longer than needed. Customers are mad, your boss is disappointed, and you are sad :(.
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="wait-for-rollback" tags="" position="625,951" size="100,100">The rollback takes but customers were affected for longer than needed. Customers are mad, your boss is disappointed, and you are sad :(.
 
 (set: $ttr to $ttr + 20)
 (set: $stress to $stress + 40)
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-  (link-repeat: &quot;Restart&quot;)[(reload:)]
-  (link-repeat: &quot;Share&quot;)[(open-url: $url)]
-  (link-repeat: &quot;Get Better&quot;)[(open-url: &quot;https://victorops.com/ebooks/why-devops-matters-collaborative-transparency-in-incident-management/&quot;)]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="beer" tags="" position="774,951" size="100,100">Wow! What a day! However, during your refreshing beer break, you get paged for another outage! It&#39;s the same issue! The backend team did another deployment and because you did not rollback the config changes, your manual fixes were overwritten! Your failure has resulted in being removed as the incident commander...
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="beer" tags="" position="773,951" size="100,100">Wow! What a day! However, during your refreshing beer break, you get paged for another outage! It&#39;s the same issue! The backend team did another deployment and because you did not rollback the config changes, your manual fixes were overwritten! Your failure has resulted in being removed as the incident commander...
 
 (set: $ttr to $ttr + 20)
 (set: $stress to $stress + 30)
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes and counting...&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-  (link-repeat: &quot;Restart&quot;)[(reload:)]
-  (link-repeat: &quot;Share&quot;)[(open-url: $url)]
-  (link-repeat: &quot;Get Better&quot;)[(open-url: &quot;https://victorops.com/ebooks/why-devops-matters-collaborative-transparency-in-incident-management/&quot;)]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="rollback-puppet-2" tags="" position="675,1177" size="100,100">You started the rollback, but the configs take 20 minutes to propagate changes. Good thing you already manually changed the configs so that customers don&#39;t have to wait for the changes to propagate!
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="rollback-puppet-2" tags="" position="675,1177" size="100,100">You started the rollback, but the configs take 20 minutes to propagate changes. Good thing you already manually changed the configs so that customers don&#39;t have to wait for the changes to propagate!
 
 Congratulations!
 
@@ -253,13 +251,12 @@ Congratulations!
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-  (link-repeat: &quot;Restart&quot;)[(reload:)]
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="792,72" size="100,100">&lt;img src=&quot;assets/vo-80s.png&quot;&gt;
+&lt;br/&gt;</tw-passagedata><tw-passagedata pid="17" name="Footer" tags="footer" position="916,70" size="100,100">&lt;div class=&quot;row&quot;&gt;
+  (link-repeat: &quot;Start Over&quot;)[(reload:)]
   (link-repeat: &quot;Share&quot;)[(open-url: $url)]
   (link-repeat: &quot;Get Better&quot;)[(open-url: &quot;https://victorops.com/ebooks/why-devops-matters-collaborative-transparency-in-incident-management/&quot;)]
-&lt;/div&gt;</tw-passagedata></tw-storydata>
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="DevOps" tags="" position="505,350" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
