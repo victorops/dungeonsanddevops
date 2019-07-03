@@ -67,10 +67,10 @@ row2 {
 	justify-content: space-between;
 }
 
-audio{
+audio {
   position:fixed;
-  top:0px;
-  right:0px;
+  bottom:5px;
+  right:5px;
   display:block;
   transition:0.2s;
   opacity:0.6;
@@ -78,10 +78,10 @@ audio{
 }
 
 audio::-webkit-media-controls-panel {
-	background-color: lightgray;
-    border: groove ghostwhite;
-    color: mediumblue;
-	font-family: "Lucida Console", Monaco, regular, monospace;
+  background-color: lightgray;
+  border: groove ghostwhite;
+  color: mediumblue;
+  font-family: "Lucida Console", Monaco, regular, monospace;
 }
 
 
@@ -133,15 +133,26 @@ twitterDesc.name = "twitter:description";
 twitterDesc.content = "Test your DevOps skills with this interactive choose-your-own-adventure style game that puts you in a downtime situation. How fast can you solve an outage without going crazy? ";
 document.head.appendChild(twitterDesc);
 
-// var music = document.createElement("iframe");
-// music.style.display = "none";
-// music.src = "https://www.youtube.com/embed/OCgqntOdnQw?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1&loop=1";
-// music.allow = "autoplay; encrypted-media";
-// document.body.appendChild(music);
-
-window.onload = function() {
-	document.getElementById("vo_audio").play();
+function playAudio() {
+	const audioPlayer = document.getElementById("vo_audio")
+	const playPromise = audioPlayer.play();
+	if (playPromise !== undefined) {
+		playPromise
+			.then(() => {
+				console.log('music playing')
+			})
+			.catch((e) => {
+				console.log('music failed to play', `${e}`)
+			})
+	}
 }
+
+document.addEventListener('click', playAudio, { once: true })
+document.addEventListener('keydown', playAudio, { once: true })
+document.addEventListener('keyup', playAudio, { once: true })
+document.addEventListener('mousemove', playAudio, { once: true })
+
+ 
 
 
 
@@ -278,9 +289,7 @@ Congratulations!
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="793,73" size="100,100">&lt;audio id=&quot;vo_audio&quot; controls loop=&quot;loop&quot;&gt;
-  &lt;source src=&quot;assets/video-game-8-bit-happy-adventu.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
-&lt;/audio&gt;
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="793,73" size="100,100">&lt;audio id=&quot;vo_audio&quot; controls src=&quot;assets/vo-audio.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
 
 &lt;br/&gt;
 &lt;img src=&quot;assets/vo-80s.png&quot;&gt;
