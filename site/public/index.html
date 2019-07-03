@@ -67,6 +67,29 @@ row2 {
 	justify-content: space-between;
 }
 
+audio{
+  position:fixed;
+  top:0px;
+  right:0px;
+  display:block;
+  transition:0.2s;
+  opacity:0.6;
+  width:200px;
+}
+
+audio::-webkit-media-controls-panel {
+	background-color: lightgray;
+    border: groove ghostwhite;
+    color: mediumblue;
+	font-family: "Lucida Console", Monaco, regular, monospace;
+}
+
+
+audio:hover{
+  opacity:1;
+}
+
+
 
 
 
@@ -110,24 +133,28 @@ twitterDesc.name = "twitter:description";
 twitterDesc.content = "Test your DevOps skills with this interactive choose-your-own-adventure style game that puts you in a downtime situation. How fast can you solve an outage without going crazy? ";
 document.head.appendChild(twitterDesc);
 
-var music = document.createElement("iframe");
-music.style.display = "none";
-music.src = "https://www.youtube.com/embed/OCgqntOdnQw?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1&loop=1";
-music.allow = "autoplay; encrypted-media";
+// var music = document.createElement("iframe");
+// music.style.display = "none";
+// music.src = "https://www.youtube.com/embed/OCgqntOdnQw?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1&loop=1";
+// music.allow = "autoplay; encrypted-media";
+// document.body.appendChild(music);
 
-document.body.appendChild(music);
-
-
-
-
-
+window.onload = function() {
+	document.getElementById("vo_audio").play();
+}
 
 
 
 
 
 
-</script><tw-passagedata pid="1" name="Start" tags="" position="624,200" size="100,100">You are a platform engineer at DigiTron! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
+
+
+
+
+
+
+</script><tw-passagedata pid="1" name="Start" tags="" position="625,200" size="100,100">You are a platform engineer at DigiTron! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
 
 There are a few teams that you could reach out to for more information:
 
@@ -251,7 +278,12 @@ Congratulations!
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="792,72" size="100,100">&lt;img src=&quot;assets/vo-80s.png&quot;&gt;
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="793,73" size="100,100">&lt;audio id=&quot;vo_audio&quot; controls loop=&quot;loop&quot;&gt;
+  &lt;source src=&quot;assets/video-game-8-bit-happy-adventu.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+&lt;/audio&gt;
+
+&lt;br/&gt;
+&lt;img src=&quot;assets/vo-80s.png&quot;&gt;
 &lt;br/&gt;</tw-passagedata><tw-passagedata pid="17" name="Footer" tags="footer" position="916,70" size="100,100">&lt;div class=&quot;row&quot;&gt;
   (link-repeat: &quot;Start Over&quot;)[(reload:)]
   (link-repeat: &quot;Share&quot;)[(open-url: $url)]
