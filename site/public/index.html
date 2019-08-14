@@ -106,6 +106,8 @@ row2 {
 
 
 
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">var icon = document.createElement("link");
 icon.type = 'image/x-icon';
 icon.rel = "shortcut icon";
@@ -267,6 +269,8 @@ window.addEventListener('build', function() {
 
 
 
+
+
 </script><tw-passagedata pid="1" name="Start" tags="" position="625,200" size="100,100">You are a platform engineer at DigiTron! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
 
 There are a few teams that you could reach out to for more information:
@@ -361,28 +365,32 @@ There are a few teams that you could reach out to for more information:
 (set: $ttr to $ttr + 5)
 (set: $stress to $stress - 10)
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="manual-correction-2" tags="" position="475,1175" size="100,100">You manually correct the config and the changes are able to take immediately. Customers are able to log in again! Since you already made the changes to the config repo, you are set for the future!
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="manual-correction-2" tags="end" position="475,1175" size="100,100">You manually correct the config and the changes are able to take immediately. Customers are able to log in again! Since you already made the changes to the config repo, you are set for the future!
 
 (set: $ttr to $ttr + 5)
 (set: $stress to $stress - 20)
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="wait-for-rollback" tags="" position="625,951" size="100,100">The rollback takes but customers were affected for longer than needed. Customers are mad, your boss is disappointed, and you are sad :(.
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="wait-for-rollback" tags="end" position="625,951" size="100,100">The rollback takes but customers were affected for longer than needed. Customers are mad, your boss is disappointed, and you are sad :(.
 
 (set: $ttr to $ttr + 20)
 (set: $stress to $stress + 40)
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="beer" tags="" position="773,951" size="100,100">Wow! What a day! However, during your refreshing beer break, you get paged for another outage! It&#39;s the same issue! The backend team did another deployment and because you did not rollback the config changes, your manual fixes were overwritten! Your failure has resulted in being removed as the incident commander...
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;
+
+(set: $name to (prompt: &quot;Your name, please:&quot;, &quot;Frances Spayne&quot;))
+
+</tw-passagedata><tw-passagedata pid="14" name="beer" tags="end" position="773,950" size="100,100">Wow! What a day! However, during your refreshing beer break, you get paged for another outage! It&#39;s the same issue! The backend team did another deployment and because you did not rollback the config changes, your manual fixes were overwritten! Your failure has resulted in being removed as the incident commander...
 
 (set: $ttr to $ttr + 20)
 (set: $stress to $stress + 30)
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes and counting...&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="rollback-puppet-2" tags="" position="675,1177" size="100,100">You started the rollback, but the configs take 20 minutes to propagate changes. Good thing you already manually changed the configs so that customers don&#39;t have to wait for the changes to propagate!
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="rollback-puppet-2" tags="end" position="675,1177" size="100,100">You started the rollback, but the configs take 20 minutes to propagate changes. Good thing you already manually changed the configs so that customers don&#39;t have to wait for the changes to propagate!
 
 Congratulations!
 
@@ -391,8 +399,16 @@ Congratulations!
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="793,73" size="100,100">&lt;div class=&quot;header-block&quot;&gt;&lt;img src=&quot;assets/vo-80s.png&quot;&gt;&lt;div id=&quot;custom-audio&quot;&gt;&lt;span class=&quot;audio-title&quot;&gt;Audio:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;br/&gt;</tw-passagedata><tw-passagedata pid="17" name="Footer" tags="footer" position="915,69" size="100,100">&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="792,73" size="100,100">&lt;div class=&quot;header-block&quot;&gt;&lt;img src=&quot;assets/vo-80s.png&quot;&gt;&lt;div id=&quot;custom-audio&quot;&gt;&lt;span class=&quot;audio-title&quot;&gt;Audio:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;br/&gt;</tw-passagedata><tw-passagedata pid="17" name="Footer" tags="footer" position="916,69" size="100,100">(set: $passage to (passage:))
+
+(if: $passage&#39;s tags contains &quot;end&quot;)[
+(set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
+](else:)[
+(set: $url to &quot;https://twitter.com/intent/tweet?text=Test%20your%20skillz %20with%20the%20@VictorOps%20DevOps%20game&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
+]
+
+&lt;div class=&quot;row&quot;&gt;
   (link-repeat: &quot;Start Over&quot;)[(reload:)]
   (link-repeat: &quot;Share&quot;)[(open-url: $url)]
   (link-repeat: &quot;Get Better&quot;)[(open-url: &quot;https://victorops.com/ebooks/why-devops-matters-collaborative-transparency-in-incident-management/&quot;)]
