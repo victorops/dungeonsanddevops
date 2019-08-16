@@ -16,6 +16,14 @@
   font-style: normal;
 }
 
+br {
+	display: none;
+}
+
+br.show {
+	display:block;
+}
+
 tw-link {
   background-color: lightgray;
   border: groove ghostwhite;
@@ -37,7 +45,7 @@ tw-story {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 5% 10%;
+  padding: 1rem 2rem;
 }
 
 tw-icon {
@@ -52,6 +60,7 @@ ul {
   background-color: brown;
   padding-left: .25rem;
   padding-right: .25rem;
+  margin-top: 1rem;
 }
 
 .row {
@@ -94,6 +103,7 @@ row2 {
 .audio-title {
 	margin-right: 10px;
 }
+
 
 
 
@@ -188,6 +198,7 @@ function playAudio() {
 		audioPlayer.pause()
 		toggleBtn.value = 'paused'
 		toggleBtn.setAttribute('class', 'play')
+		toggleBtn.setAttribute('title', 'Play audio')
 	}
 	else {
 		const playPromise = audioPlayer.play();
@@ -196,6 +207,7 @@ function playAudio() {
 			.then(() => {
 				console.log('music playing')
 				toggleBtn.setAttribute('class', 'pause')
+				toggleBtn.setAttribute('title', 'Pause audio')
 				toggleBtn.value = 'playing'
 			})
 			.catch((e) => {
@@ -237,6 +249,7 @@ function setupAudio() {
 	playButton.setAttribute('id', 'play-button')
 	playButton.setAttribute('class', 'play')
 	playButton.setAttribute('value', 'paused')
+	playButton.setAttribute('title', 'Play audio')
 
 	customAudio.appendChild(playButton)
 	playButton.addEventListener('click', playAudio)
@@ -271,8 +284,9 @@ window.addEventListener('build', function() {
 
 
 
-</script><tw-passagedata pid="1" name="Start" tags="" position="625,200" size="100,100">You are a platform engineer at DigiTron! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
 
+</script><tw-passagedata pid="1" name="Start" tags="" position="625,200" size="100,100">You are a platform engineer at DigiTron! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
+&lt;br class=&quot;show&quot;/&gt;
 There are a few teams that you could reach out to for more information:
 
 * [[DevOps-&gt;ops-management]]
@@ -387,7 +401,7 @@ There are a few teams that you could reach out to for more information:
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes and counting...&lt;/div&gt;
 &lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="rollback-puppet-2" tags="end" position="675,1177" size="100,100">You started the rollback, but the configs take 20 minutes to propagate changes. Good thing you already manually changed the configs so that customers don&#39;t have to wait for the changes to propagate!
-
+&lt;br class=&quot;show&quot;/&gt;
 Congratulations!
 
 (set: $ttr to $ttr + 0)
@@ -395,15 +409,12 @@ Congratulations!
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="792,73" size="100,100">&lt;div class=&quot;header-block&quot;&gt;&lt;img src=&quot;assets/vo-80s.png&quot;&gt;&lt;div id=&quot;custom-audio&quot;&gt;&lt;span class=&quot;audio-title&quot;&gt;Audio:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;br/&gt;</tw-passagedata><tw-passagedata pid="17" name="Footer" tags="footer" position="915,69" size="100,100">(set: $passage to (passage:))
-
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="791,73" size="100,100">&lt;div class=&quot;header-block&quot;&gt;&lt;a href=&quot;https://victorops.com&quot;&gt;&lt;img src=&quot;assets/vo-80s.png&quot; alt=&quot;VictorOps&quot;&gt;&lt;/a&gt;&lt;div id=&quot;custom-audio&quot;&gt;&lt;span class=&quot;audio-title&quot;&gt;Audio:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="Footer" tags="footer" position="915,69" size="100,100">(set: $passage to (passage:))
 (if: $passage&#39;s tags contains &quot;end&quot;)[
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 ](else:)[
 (set: $url to &quot;https://twitter.com/intent/tweet?text=Think%20you%20got%20what%20it%20takes%20to%20resolve%20a%20system%20outage%3F%20Test%20your%20DevOps%20skillz%20with%20our%20On-Call%20Adventure%20game.&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 ]
-
 &lt;div class=&quot;row&quot;&gt;
   (link-repeat: &quot;Start Over&quot;)[(reload:)]
   (link-repeat: &quot;Share&quot;)[(open-url: $url)]
