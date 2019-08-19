@@ -104,10 +104,125 @@ row2 {
 	margin-right: 10px;
 }
 
+.button:hover {
+  background: #06D85F;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
+.overlay:target {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 90%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  z-index: 2;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.flex {
+	display: flex;
+  	flex-flow: row nowrap;
+}
+
+.flex-right,
+.flex-left {
+	flex: 0 0 50%;
+}
+
+.flex-right {
+    font-family: Lato,Helvetica Neue,Helvetica,Arial,sans-serif;
+  	display: flex;
+	flex-direction: column;
+  	justify-content: center;
+  	color: #333;
+  	padding: 40px;
+}
+
+.vertical-space {
+	margin: 1rem 0;
+}
+
+input[type="email"] {
+	font-size: 24px;
+	border-radius: 5px;
+  	font-family: Lato,Helvetica Neue,Helvetica,Arial,sans-serif;
+	border: 1px solid #b3b3b3;
+  	padding: 10px;
+}
+
+input[type="email"]::placeholder {
+	color: #b3b3b3;
+  	opacity: 1;
+}
+
+.subscribe-img {
+	width: 100%;
+}
+
+.subscribe-btn {
+    padding: 10px 20px;
+    background: orange;
+    font-size: 24px;
+    border-radius: 5px;
+    color: #fff;
+  	font-family: Lato,Helvetica Neue,Helvetica,Arial,sans-serif;
+  	border: none;
+    cursor: pointer;
+  	text-decoration: none;
+}
 
 
+@media screen and (min-width: 1400px){
+  .popup{
+    width: 70%;
+  }
+}
 
-
+@media screen and (min-width: 1900px){
+  .popup{
+    width: 50%;
+  }
+}
 
 
 
@@ -285,7 +400,7 @@ window.addEventListener('build', function() {
 
 
 
-</script><tw-passagedata pid="1" name="Start" tags="" position="625,200" size="100,100">You are a platform engineer at DigiTron! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
+</script><tw-passagedata pid="1" name="Start" tags="" position="626,202" size="100,100">You are a platform engineer at DigiTron! While working on the product, all of a sudden, you can no longer log in! All incidents and alerts are inaccessible through the platform.
 &lt;br class=&quot;show&quot;/&gt;
 There are a few teams that you could reach out to for more information:
 
@@ -409,9 +524,29 @@ Congratulations!
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="791,73" size="100,100">&lt;div class=&quot;header-block&quot;&gt;&lt;a href=&quot;https://victorops.com&quot;&gt;&lt;img src=&quot;assets/vo-80s.png&quot; alt=&quot;VictorOps&quot;&gt;&lt;/a&gt;&lt;div id=&quot;custom-audio&quot;&gt;&lt;span class=&quot;audio-title&quot;&gt;Audio:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="Footer" tags="footer" position="915,69" size="100,100">(set: $passage to (passage:))
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Header" tags="header" position="791,73" size="100,100">&lt;div class=&quot;header-block&quot;&gt;&lt;a href=&quot;https://victorops.com&quot;&gt;&lt;img src=&quot;assets/vo-80s.png&quot; alt=&quot;VictorOps&quot;&gt;&lt;/a&gt;&lt;div id=&quot;custom-audio&quot;&gt;&lt;span class=&quot;audio-title&quot;&gt;Audio:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;br class=&quot;show&quot;/&gt;</tw-passagedata><tw-passagedata pid="17" name="Footer" tags="footer" position="916,68" size="100,100">(set: $passage to (passage:))
 (if: $passage&#39;s tags contains &quot;end&quot;)[
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
+&lt;div id=&quot;vogame&quot; class=&quot;overlay&quot;&gt;
+	&lt;div class=&quot;popup&quot;&gt;
+		&lt;div&gt;&lt;a class=&quot;close&quot; href=&quot;#vogame&quot;&gt;&amp;times;&lt;/a&gt;&lt;/div&gt;
+		&lt;div class=&quot;content&quot;&gt;
+			&lt;div class=&quot;flex&quot;&gt;
+			  &lt;div class=&quot;flex-right&quot;&gt;
+			  	&lt;h3&gt;Think Your Score Sucks?&lt;/h3&gt;
+				&lt;p&gt;Learn how to make on-call suck less by downloading our free webinar with 5 quick wins for a better on-call experience.&lt;/p&gt;
+				&lt;div class=&quot;vertical-space&quot;&gt;
+					&lt;a name=&quot;button&quot; title=&quot;Get the webinar&quot; class=&quot;subscribe-btn&quot; href=&quot;https://victorops.com/webinars/how-to-make-on-call-suck-less/&quot;&gt;Check It Out&lt;/a&gt;
+				&lt;/div&gt;
+			  &lt;/div&gt;
+			  &lt;div class=&quot;flex-left&quot;&gt;
+				  &lt;img class=&quot;subscribe-img&quot; src=&quot;assets/vogame-subscribe.jpg&quot;&gt;&lt;/img?
+			  &lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
 ](else:)[
 (set: $url to &quot;https://twitter.com/intent/tweet?text=Think%20you%20got%20what%20it%20takes%20to%20resolve%20a%20system%20outage%3F%20Test%20your%20DevOps%20skillz%20with%20our%20On-Call%20Adventure%20game.&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 ]
