@@ -56,6 +56,10 @@ ul {
   list-style: none;
 }
 
+.hidden {
+  display: none;
+}
+
 .timer {
   background-color: brown;
   padding-left: .25rem;
@@ -66,7 +70,7 @@ ul {
 .row {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 60px;
 }
 
@@ -233,6 +237,7 @@ input[type="email"]::placeholder {
 
 
 
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">var icon = document.createElement("link");
 icon.type = 'image/x-icon';
 icon.rel = "shortcut icon";
@@ -374,6 +379,14 @@ function setupAudio() {
 window.addEventListener('build', function() {
 	setupAudio()
 	detectInteraction()
+	
+	var closePopup = document.getElementById('close-popup')
+	var overlayContainer = document.getElementById('overlay-container')
+	if(closePopup && overlayContainer) {
+		closePopup.addEventListener('click', (e) => {
+			overlayContainer.classList.add('hidden')
+		})
+	}
 })
 
 
@@ -383,6 +396,7 @@ window.addEventListener('build', function() {
 
 
 	
+
 
 
 
@@ -515,7 +529,7 @@ There are a few teams that you could reach out to for more information:
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 
 &lt;div class=&quot;timer&quot;&gt;Time to resolve: *$ttr* minutes and counting...&lt;/div&gt;
-&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="rollback-puppet-2" tags="end" position="675,1177" size="100,100">You started the rollback, but the configs take 20 minutes to propagate changes. Good thing you already manually changed the configs so that customers don&#39;t have to wait for the changes to propagate!
+&lt;div class=&quot;timer&quot;&gt;Stress: *$stress*%&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="rollback-puppet-2" tags="end" position="675,1176" size="100,100">You started the rollback, but the configs take 20 minutes to propagate changes. Good thing you already manually changed the configs so that customers don&#39;t have to wait for the changes to propagate!
 &lt;br class=&quot;show&quot;/&gt;
 Congratulations!
 
@@ -528,9 +542,9 @@ Congratulations!
 &lt;br class=&quot;show&quot;/&gt;</tw-passagedata><tw-passagedata pid="17" name="Footer" tags="footer" position="916,68" size="100,100">(set: $passage to (passage:))
 (if: $passage&#39;s tags contains &quot;end&quot;)[
 (set: $url to &quot;https://twitter.com/intent/tweet?text=I%20beat%20the%20@VictorOps%20DevOps%20game%20in%20&quot;+(text: $ttr)+&quot;%20minutes.%20Test%20your%20skillz at&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
-&lt;div id=&quot;vogame&quot; class=&quot;overlay&quot;&gt;
+&lt;div id=&quot;overlay-container&quot; class=&quot;overlay&quot;&gt;
 	&lt;div class=&quot;popup&quot;&gt;
-		&lt;div&gt;&lt;a class=&quot;close&quot; href=&quot;#vogame&quot;&gt;&amp;times;&lt;/a&gt;&lt;/div&gt;
+		&lt;div&gt;&lt;a class=&quot;close&quot; id=&quot;close-popup&quot;&gt;&amp;times;&lt;/a&gt;&lt;/div&gt;
 		&lt;div class=&quot;content&quot;&gt;
 			&lt;div class=&quot;flex&quot;&gt;
 			  &lt;div class=&quot;flex-right&quot;&gt;
@@ -541,7 +555,7 @@ Congratulations!
 				&lt;/div&gt;
 			  &lt;/div&gt;
 			  &lt;div class=&quot;flex-left&quot;&gt;
-				  &lt;img class=&quot;subscribe-img&quot; src=&quot;assets/vogame-subscribe.jpg&quot;&gt;&lt;/img?
+				  &lt;img class=&quot;subscribe-img&quot; src=&quot;assets/vogame-subscribe.jpg&quot; alt=&quot;VictorOps Resource&quot;&gt;&lt;/img?
 			  &lt;/div&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;
@@ -551,7 +565,7 @@ Congratulations!
 (set: $url to &quot;https://twitter.com/intent/tweet?text=Think%20you%20got%20what%20it%20takes%20to%20resolve%20a%20system%20outage%3F%20Test%20your%20DevOps%20skillz%20with%20our%20On-Call%20Adventure%20game.&amp;url=https%3A%2F%2Fdevopsgame.victorops.com%2F&amp;hashtags=devops,oncall&amp;via=VictorOps&amp;related=splunk%3ASplunk&quot;)
 ]
 &lt;div class=&quot;row&quot;&gt;
-  (link-repeat: &quot;Start Over&quot;)[(reload:)]
+  (if: $passage&#39;s tags contains &quot;end&quot;)[(link-repeat: &quot;Start Over&quot;)[(reload:)]]
   (link-repeat: &quot;Share&quot;)[(open-url: $url)]
   (link-repeat: &quot;Get Better&quot;)[(open-url: &quot;https://victorops.com/ebooks/why-devops-matters-collaborative-transparency-in-incident-management/&quot;)]
 &lt;/div&gt;
